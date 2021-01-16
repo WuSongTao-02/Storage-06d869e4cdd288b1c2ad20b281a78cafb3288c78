@@ -1,0 +1,128 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserMsessage</title>
+    <link rel="stylesheet" href="~/X-admin/css/font.css" />
+    <link rel="stylesheet" href="~/X-admin/css/login.css" />
+    <link rel="stylesheet" href="~/X-admin/css/xadmin.css" />
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+
+            <div class="layui-form-item">
+                <label for="L_username" class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="UserName" value="@Request.QueryString["name"]" disabled class="layui-input">
+                </div>
+                <label for="L_username" class="layui-form-label">真名</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="RealName"  class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">电话</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="phone" required="" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <label for="L_repass" class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="Email"class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_pass" class="layui-form-label">部门</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="dept" required="" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                </div>
+                <label for="L_pass" class="layui-form-label">角色</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="role" required="" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" id="btn"  style="margin-left:180px">修改</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/layer/layer.js"></script>
+<script src="~/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+<script src="~/X-admin/js/xadmin.js"></script>
+<script>
+    var name = $("#UserName").val();
+
+    $(function () {
+        $.ajax({
+            type: "POST",//提交方式
+            url: "/WST/Users",//请求的URL路径
+            data: "{UserName:'" + name + "'}",//向服务器传递的参数
+            dataType: "json",//预期服务器返回的数据类型
+            contentType: "application/json",//发送信息至服务器时内容编码类型
+            //请求成功后的回调函数
+            success: function (result) {
+                console.log(result);
+                $("#RealName").val(result[0].RealName);
+                $("#phone").val(result[0].phone);
+                $("#Email").val(result[0].Email);
+                $("#dept").val(result[0].DeptName);
+                $("#role").val(result[0].RoleName);
+
+            },
+            error: function (ex) {
+                alert("Error:" + ex.responseText);
+            }
+
+        })
+
+    })
+
+    $("#btn").click(function () {
+        var phone = $("#phone").val();
+        if (!(/^1[3456789]\d{9}$/.test(phone))) {
+            layer.msg('请输入正确的手机号码', function () {
+            });
+            return false;
+        }
+        var emali = $("#Email").val();
+        var reg = /^(\w)+(\.\w+)*@@(\w)+((\.\w+)+)$/;
+        if (!reg.test(emali)) {
+            layer.msg('请输入正确的邮箱', function () {
+            });
+            return false;
+        }
+        $.ajax({
+            type: "POST",//提交方式
+            url: "/WST/UserMessages",//请求的URL路径
+            data: "{admin:{UserName:'" + name + "',RealName:'" + $("#RealName").val() + "',phone:'" + phone + "',Email:'" + emali + "'}}",//向服务器传递的参数
+            dataType: "json",//预期服务器返回的数据类型
+            contentType: "application/json",//发送信息至服务器时内容编码类型
+            //请求成功后的回调函数
+            success: function (result) {
+                if (result > 0) {
+                    layer.msg('修改成功', {
+                        icon: 6,
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                      
+                    }); 
+                }
+
+            },
+            error: function (ex) {
+                alert("Error:" + ex.responseText);
+            }
+        })
+    });
+</script>

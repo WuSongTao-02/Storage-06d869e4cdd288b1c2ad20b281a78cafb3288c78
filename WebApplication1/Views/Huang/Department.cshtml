@@ -1,0 +1,154 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Department</title>
+
+    <link href="~/X-admin/css/font.css" rel="stylesheet" />
+    <link href="~/X-admin/js/xadmin.js" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/X-admin/lib/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="~/X-admin/css/xadmin.css">
+    <script src="~/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/X-admin/js/xadmin.js"></script>
+
+
+
+</head>
+<body>
+    <button class="layui-btn" onclick="xadmin.open('添加部门','/Huang/Create',500,240)"><i class="layui-icon"></i>添加</button>
+
+
+    
+            <div class="layui-card-body layui-table-body layui-table-main">
+                <table  class="layui-table layui-form">
+                    <thead>
+                        <tr>
+                            <th>部门编号</th>
+                            <th>部门名称</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb1"></tbody>
+                </table>
+                <div class="layui-card-body " id="demoPageList"></div>
+            </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/X-admin/lib/layui/layui.js"></script>
+
+<script>
+
+
+    var pageIndex = 1;
+    var pageSize = 10;
+    var pageCount = 0;
+    var rows = 0;
+    function ConverTime(op) {
+        var date = new Date(parseInt(op.substr(6)));
+        return date.toLocaleDateString();
+    }
+
+    $(function () {
+        PageRows();
+        PageList(pageIndex, pageSize);
+
+    });
+
+
+    function PageRows() {
+        $.ajax({
+            type: "POST",
+            url: "/Huang/GetRows",
+            data: "{}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                //获取总条数
+                rows = result;
+
+                layui.use(['laypage', 'layer'], function () {
+                    var laypage = layui.laypage
+                        , layer = layui.layer;
+                    //完整功能
+                    laypage.render({
+                        elem: 'demoPageList'//分页容器的id
+                        , count: rows//总条数
+                        , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                        , jump: function (obj, first) {
+                            if (!first) {
+                                //调用分页的方法
+                                PageList(obj.curr, obj.limit);
+                            }
+                            console.log(obj)
+                        }
+                    });
+                });
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+
+    }
+
+    function PageList(pindex, psize) {
+        $.ajax({
+            type: "POST",
+            url: "/Huang/DemoPageList",
+            data: "{pageIndex:" + pindex + ",pageSize:" + psize + "}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                //获取总页数
+                pageCount = result.PageCount;
+                //console.log(result);
+                $("#tb1 tr").remove();
+                $.each(result.DataList, function (index, data) {                                                         
+                    $("#tb1").append("<tr><th>" + data.DeptId + "</th><th>" + data.DeptName + "</th><th>" + ConverTime(data.CreateTime) + "</th><th> <button type='button' class='layui-btn layui-btn-sm'><i class='layui-icon' onclick='return Del(" + data.DeptId + ")'></i></button><button type='button' class='layui-btn layui-btn-sm'><i class='layui-icon'></i></button></th></tr>");
+                });
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+
+    }
+
+    function Del(DeptId) {
+        if (confirm('确定删除?')) {
+
+            $.ajax({
+                type: "POST",
+                url: "/Huang/Del",
+                data: "{DeptId:" + DeptId + "}",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (result) {
+                    if (result > 0) {
+                        alert("删除成功！");
+                        PageList(1,10);
+                    }
+                    else {
+                        alert("删除失败！");
+                    }
+                },
+                error: function (ex) {
+                    alert(ex.responseText);
+                }
+            });
+        }
+        return false;
+    }
+
+
+</script>

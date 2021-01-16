@@ -1,0 +1,192 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>pandian</title>
+    <link rel="stylesheet" href="~/X-admin/css/font.css">
+    <link rel="stylesheet" href="~/X-admin/css/xadmin.css">
+
+    <script src="~/X-admin/lib/layui/layui.js"></script>
+
+    <script src="~/X-admin/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+                <cite>导航元素</cite>
+            </a>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body ">
+
+
+                        <div class="layui-inline layui-show-xs-block">
+                            <input type="text" id="username" placeholder="报损类型" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-inline layui-show-xs-block">
+                            <button id="chaxun" class="layui-btn" onclick="ChaXun2(this)" lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>查询</button>
+                        </div>
+
+                    </div>
+
+                    <div class="layui-card-body ">
+                        <table class="layui-table layui-form">
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>报损类型</td>
+                                    <td>关联订单编号</td>
+                                    <td>制单人</td>
+                                    <td>审核编号</td>
+                                    <td>创建时间</td>
+                                    <td>操作</td>
+                            </thead>
+                            <tbody id="tab">
+                            </tbody>
+                        </table>
+                        <div id="zwb">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="lib/layui/layui.all.js"></script>
+<script src="../Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    var PageIndex = 1;
+    var PageSize = 3;
+    var PageCount = 0;
+    var rows = 0;
+    $(function () {
+        GetRows();
+        PageList(PageIndex, PageSize);
+
+    });
+    function time(m) {
+        var dd = new Date(parseInt(m.substr(6)));
+        return dd.toLocaleDateString();
+    }
+    function PageList(pindex, psize) {
+        $.ajax({
+            type: "post",
+            url: "/shuaikm/GetPageList",
+            data: "{PageIndex:" + pindex + ",PageSize:" + psize + "}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+                $("#tab tr").remove();
+                $.each(res.DataList, function (index, data) {
+                    $("#tab").append("<tr><td>" + data.Damid + "</td><td>" + data.DamType + "</td><td>" + data.DamOrder + "</td><td>" + data.DamPerson + "</td><td>" + data.AudiId + "</td><td>" + time(data.CreateTime) + "</td><td><a onclick='return edit(" + data.Damid + ")'>删除</a></td></tr>");
+
+                });
+            }
+        });
+    }
+    function ChaXun2() {
+        var name = $("#username").val();
+        alert(name);
+        $.ajax({
+
+            type: "post",
+            url: "/shuaikm/GetPageList1",
+            data: "{PageIndex:" + PageIndex + ",PageSize:" + PageSize + ",name:'" + name + "'}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+                $("#tab tr").remove();
+                $.each(res.DataList, function (index, data) {
+                    $("#tab").append("<tr><td>" + data.Damid + "</td><td>" + data.DamType + "</td><td>" + data.DamOrder + "</td><td>" + data.DamPerson + "</td><td>" + data.AudiId + "</td><td>" + time(data.CreateTime) + "</td><td><a onclick='return edit(" + data.Damid + ")'>删除</a></td></tr>");
+                });
+            }
+        });
+    }
+
+
+    function edit(id) {
+        alert(id);
+        if (confirm('确定删除?')) {
+            $.ajax({
+                type: "POST",
+                url: "/shuaikm/edit",
+                data: "{id:" + id + "}",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+                    if (res > 0) {
+                        alert("删除成功");
+                        PageList(PageIndex, PageSize);
+                    }
+                    else {
+                        alert("删除失败");
+                    }
+                },
+                error: function (ex) {
+                    alert("Error:" + ex.responseText);
+                }
+            });
+        }
+        return false;
+    }
+    function GetRows() {
+        $.ajax({
+            type: "POST",
+            url: "/shuaikm/GetRows",
+            data: "{}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                //获取总条数
+                rows = result;
+                layui.use(['laypage', 'layer'], function () {
+                    var laypage = layui.laypage
+                        , layer = layui.layer;
+                    //完整功能
+                    laypage.render({
+                        elem: 'zwb'
+                        //设置总条数
+                        , count: rows
+                        , limit: 4
+                        , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                        , jump: function (obj, first) {
+                            if (!first) {
+                                //调用我们自己分页的方法
+                                //obj.curr 当前页码
+                                //obj.limit 每页显示条数
+                                PageList(obj.curr, obj.limit);
+                            }
+                            console.log(obj)
+                        }
+                    });
+
+                });
+
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+
+    }
+</script>

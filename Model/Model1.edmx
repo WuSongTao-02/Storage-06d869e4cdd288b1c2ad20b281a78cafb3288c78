@@ -1,0 +1,1949 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CangChuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RealName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="DeleteTime" Type="date" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Auditing">
+          <Key>
+            <PropertyRef Name="AudiId" />
+          </Key>
+          <Property Name="AudiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AudiName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CombackStorage">
+          <Key>
+            <PropertyRef Name="CombStId" />
+          </Key>
+          <Property Name="CombStId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CobId" Type="int" Nullable="false" />
+          <Property Name="DeliId" Type="int" Nullable="false" />
+          <Property Name="DelSId" Type="int" Nullable="false" />
+          <Property Name="ComNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comeback">
+          <Key>
+            <PropertyRef Name="CobId" />
+          </Key>
+          <Property Name="CobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CobType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeliId" Type="int" Nullable="false" />
+          <Property Name="CobPerson" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+          <Property Name="AudiId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CusTel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="email" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="CusNum" Type="int" Nullable="false" />
+          <Property Name="Remanke" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerAdd">
+          <Key>
+            <PropertyRef Name="CusadId" />
+          </Key>
+          <Property Name="CusadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusadAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CusId" Type="int" Nullable="false" />
+          <Property Name="CusadPerson" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CusadTel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Damage">
+          <Key>
+            <PropertyRef Name="Damid" />
+          </Key>
+          <Property Name="Damid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DamType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DamOrder" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DamPerson" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AudiId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DamageStorage">
+          <Key>
+            <PropertyRef Name="DamSId" />
+          </Key>
+          <Property Name="DamSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Damid" Type="int" Nullable="false" />
+          <Property Name="ProId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProBaoSNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deliver">
+          <Key>
+            <PropertyRef Name="DeliId" />
+          </Key>
+          <Property Name="DeliId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeliaOrder" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DelDate" Type="date" Nullable="false" />
+          <Property Name="CusId" Type="int" Nullable="false" />
+          <Property Name="DeliPerson" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+          <Property Name="AudiId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliverStorage">
+          <Key>
+            <PropertyRef Name="DelSId" />
+          </Key>
+          <Property Name="DelSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliId" Type="int" Nullable="false" />
+          <Property Name="ProId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProChukNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GarageShift">
+          <Key>
+            <PropertyRef Name="GarSId" />
+          </Key>
+          <Property Name="GarSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GarSType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AudiId" Type="int" Nullable="false" />
+          <Property Name="GarSOrder" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GarSPerson" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GarageShiftStorage">
+          <Key>
+            <PropertyRef Name="GarSStoId" />
+          </Key>
+          <Property Name="GarSStoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GarSId" Type="int" Nullable="false" />
+          <Property Name="ProId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Supid" Type="int" Nullable="false" />
+          <Property Name="StorId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Probaict">
+          <Key>
+            <PropertyRef Name="ProId" />
+          </Key>
+          <Property Name="ProId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProPrice" Type="money" Nullable="false" />
+          <Property Name="PorGuiGe" Type="varchar" MaxLength="20" />
+          <Property Name="ProCId" Type="int" Nullable="false" />
+          <Property Name="UnId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="ProNumber" Type="int" Nullable="false" />
+          <Property Name="ProJinhuo" Type="int" Nullable="false" />
+          <Property Name="ProChuhuo" Type="int" Nullable="false" />
+          <Property Name="ProBaosun" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProbaictCatagory">
+          <Key>
+            <PropertyRef Name="ProCId" />
+          </Key>
+          <Property Name="ProCId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProCName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProCCreteName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProbaictStorage">
+          <Key>
+            <PropertyRef Name="ProSId" />
+          </Key>
+          <Property Name="ProSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Supid" Type="int" Nullable="false" />
+          <Property Name="StorId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Storehouse">
+          <Key>
+            <PropertyRef Name="StorId" />
+          </Key>
+          <Property Name="StorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreNum" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StoreName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Supid" Type="int" Nullable="false" />
+          <Property Name="StId" Type="int" Nullable="false" />
+          <Property Name="IsMoren" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Storehousetype">
+          <Key>
+            <PropertyRef Name="StId" />
+          </Key>
+          <Property Name="StId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsJin" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupId" />
+          </Key>
+          <Property Name="SupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupNum" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SupName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnId" />
+          </Key>
+          <Property Name="UnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VenId" />
+          </Key>
+          <Property Name="VenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VenName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VenTel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="VenEmain" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VenPerson" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VenAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="WarId" />
+          </Key>
+          <Property Name="WarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WarType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="WarOrder" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WarPerson" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VenId" Type="int" Nullable="false" />
+          <Property Name="AudiId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remake" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WarehouseStorage">
+          <Key>
+            <PropertyRef Name="WarSId" />
+          </Key>
+          <Property Name="WarSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WarId" Type="int" Nullable="false" />
+          <Property Name="ProId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WarRukuNum" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Admin_Dept">
+          <End Role="Dept" Type="Self.Dept" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dept">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CombackStorage_Comeback">
+          <End Role="Comeback" Type="Self.Comeback" Multiplicity="1" />
+          <End Role="CombackStorage" Type="Self.CombackStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comeback">
+              <PropertyRef Name="CobId" />
+            </Principal>
+            <Dependent Role="CombackStorage">
+              <PropertyRef Name="CobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CombackStorage_Deliver">
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="1" />
+          <End Role="CombackStorage" Type="Self.CombackStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliver">
+              <PropertyRef Name="DeliId" />
+            </Principal>
+            <Dependent Role="CombackStorage">
+              <PropertyRef Name="DeliId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CombackStorage_DeliverStorage">
+          <End Role="DeliverStorage" Type="Self.DeliverStorage" Multiplicity="1" />
+          <End Role="CombackStorage" Type="Self.CombackStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliverStorage">
+              <PropertyRef Name="DelSId" />
+            </Principal>
+            <Dependent Role="CombackStorage">
+              <PropertyRef Name="DelSId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comeback_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Comeback" Type="Self.Comeback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Comeback">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerAdd_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerAdd" Type="Self.CustomerAdd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="CustomerAdd">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Damage_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Damage" Type="Self.Damage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Damage">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageStorage_Damage">
+          <End Role="Damage" Type="Self.Damage" Multiplicity="1" />
+          <End Role="DamageStorage" Type="Self.DamageStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Damage">
+              <PropertyRef Name="Damid" />
+            </Principal>
+            <Dependent Role="DamageStorage">
+              <PropertyRef Name="Damid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="DamageStorage" Type="Self.DamageStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="DamageStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deliver_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deliver_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliverStorage_Deliver">
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="1" />
+          <End Role="DeliverStorage" Type="Self.DeliverStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliver">
+              <PropertyRef Name="DeliId" />
+            </Principal>
+            <Dependent Role="DeliverStorage">
+              <PropertyRef Name="DeliId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliverStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="DeliverStorage" Type="Self.DeliverStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="DeliverStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageShift_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="GarageShift" Type="Self.GarageShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="GarageShift">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageShiftStorage_GarageShiftStorage">
+          <End Role="GarageShift" Type="Self.GarageShift" Multiplicity="1" />
+          <End Role="GarageShiftStorage" Type="Self.GarageShiftStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GarageShift">
+              <PropertyRef Name="GarSId" />
+            </Principal>
+            <Dependent Role="GarageShiftStorage">
+              <PropertyRef Name="GarSId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageShiftStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="GarageShiftStorage" Type="Self.GarageShiftStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="GarageShiftStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Probaict_ProbaictCatagory1">
+          <End Role="ProbaictCatagory" Type="Self.ProbaictCatagory" Multiplicity="1" />
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProbaictCatagory">
+              <PropertyRef Name="ProCId" />
+            </Principal>
+            <Dependent Role="Probaict">
+              <PropertyRef Name="ProCId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Probaict_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnId" />
+            </Principal>
+            <Dependent Role="Probaict">
+              <PropertyRef Name="UnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProbaictStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="ProbaictStorage" Type="Self.ProbaictStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="ProbaictStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProbaictStorage_Storehouse">
+          <End Role="Storehouse" Type="Self.Storehouse" Multiplicity="1" />
+          <End Role="ProbaictStorage" Type="Self.ProbaictStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storehouse">
+              <PropertyRef Name="StorId" />
+            </Principal>
+            <Dependent Role="ProbaictStorage">
+              <PropertyRef Name="StorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProbaictStorage_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="ProbaictStorage" Type="Self.ProbaictStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupId" />
+            </Principal>
+            <Dependent Role="ProbaictStorage">
+              <PropertyRef Name="Supid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storehouse_Storehousetype">
+          <End Role="Storehousetype" Type="Self.Storehousetype" Multiplicity="1" />
+          <End Role="Storehouse" Type="Self.Storehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storehousetype">
+              <PropertyRef Name="StId" />
+            </Principal>
+            <Dependent Role="Storehouse">
+              <PropertyRef Name="StId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storehouse_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Storehouse" Type="Self.Storehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupId" />
+            </Principal>
+            <Dependent Role="Storehouse">
+              <PropertyRef Name="Supid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VenId" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="VenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WarehouseStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="WarehouseStorage" Type="Self.WarehouseStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="WarehouseStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WarehouseStorage_Warehouse">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+          <End Role="WarehouseStorage" Type="Self.WarehouseStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WarId" />
+            </Principal>
+            <Dependent Role="WarehouseStorage">
+              <PropertyRef Name="WarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CangChuModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auditing" EntityType="Self.Auditing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CombackStorage" EntityType="Self.CombackStorage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comeback" EntityType="Self.Comeback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerAdd" EntityType="Self.CustomerAdd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Damage" EntityType="Self.Damage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamageStorage" EntityType="Self.DamageStorage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deliver" EntityType="Self.Deliver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliverStorage" EntityType="Self.DeliverStorage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dept" EntityType="Self.Dept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GarageShift" EntityType="Self.GarageShift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GarageShiftStorage" EntityType="Self.GarageShiftStorage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Probaict" EntityType="Self.Probaict" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProbaictCatagory" EntityType="Self.ProbaictCatagory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProbaictStorage" EntityType="Self.ProbaictStorage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storehouse" EntityType="Self.Storehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storehousetype" EntityType="Self.Storehousetype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WarehouseStorage" EntityType="Self.WarehouseStorage" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admin_Dept" Association="Self.FK_Admin_Dept">
+            <End Role="Dept" EntitySet="Dept" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_Role" Association="Self.FK_Admin_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CombackStorage_Comeback" Association="Self.FK_CombackStorage_Comeback">
+            <End Role="Comeback" EntitySet="Comeback" />
+            <End Role="CombackStorage" EntitySet="CombackStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CombackStorage_Deliver" Association="Self.FK_CombackStorage_Deliver">
+            <End Role="Deliver" EntitySet="Deliver" />
+            <End Role="CombackStorage" EntitySet="CombackStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CombackStorage_DeliverStorage" Association="Self.FK_CombackStorage_DeliverStorage">
+            <End Role="DeliverStorage" EntitySet="DeliverStorage" />
+            <End Role="CombackStorage" EntitySet="CombackStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comeback_Auditing" Association="Self.FK_Comeback_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Comeback" EntitySet="Comeback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerAdd_Customer" Association="Self.FK_CustomerAdd_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerAdd" EntitySet="CustomerAdd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Damage_Auditing" Association="Self.FK_Damage_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Damage" EntitySet="Damage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageStorage_Damage" Association="Self.FK_DamageStorage_Damage">
+            <End Role="Damage" EntitySet="Damage" />
+            <End Role="DamageStorage" EntitySet="DamageStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageStorage_Probaict" Association="Self.FK_DamageStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="DamageStorage" EntitySet="DamageStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deliver_Auditing" Association="Self.FK_Deliver_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Deliver" EntitySet="Deliver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deliver_Customer" Association="Self.FK_Deliver_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Deliver" EntitySet="Deliver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliverStorage_Deliver" Association="Self.FK_DeliverStorage_Deliver">
+            <End Role="Deliver" EntitySet="Deliver" />
+            <End Role="DeliverStorage" EntitySet="DeliverStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliverStorage_Probaict" Association="Self.FK_DeliverStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="DeliverStorage" EntitySet="DeliverStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageShift_Auditing" Association="Self.FK_GarageShift_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="GarageShift" EntitySet="GarageShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageShiftStorage_GarageShiftStorage" Association="Self.FK_GarageShiftStorage_GarageShiftStorage">
+            <End Role="GarageShift" EntitySet="GarageShift" />
+            <End Role="GarageShiftStorage" EntitySet="GarageShiftStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageShiftStorage_Probaict" Association="Self.FK_GarageShiftStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="GarageShiftStorage" EntitySet="GarageShiftStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Probaict_ProbaictCatagory1" Association="Self.FK_Probaict_ProbaictCatagory1">
+            <End Role="ProbaictCatagory" EntitySet="ProbaictCatagory" />
+            <End Role="Probaict" EntitySet="Probaict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Probaict_Unit" Association="Self.FK_Probaict_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Probaict" EntitySet="Probaict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProbaictStorage_Probaict" Association="Self.FK_ProbaictStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="ProbaictStorage" EntitySet="ProbaictStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProbaictStorage_Storehouse" Association="Self.FK_ProbaictStorage_Storehouse">
+            <End Role="Storehouse" EntitySet="Storehouse" />
+            <End Role="ProbaictStorage" EntitySet="ProbaictStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProbaictStorage_Supplier" Association="Self.FK_ProbaictStorage_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="ProbaictStorage" EntitySet="ProbaictStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storehouse_Storehousetype" Association="Self.FK_Storehouse_Storehousetype">
+            <End Role="Storehousetype" EntitySet="Storehousetype" />
+            <End Role="Storehouse" EntitySet="Storehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storehouse_Supplier" Association="Self.FK_Storehouse_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Storehouse" EntitySet="Storehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Auditing" Association="Self.FK_Warehouse_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Vendor" Association="Self.FK_Warehouse_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WarehouseStorage_Probaict" Association="Self.FK_WarehouseStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="WarehouseStorage" EntitySet="WarehouseStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WarehouseStorage_Warehouse" Association="Self.FK_WarehouseStorage_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WarehouseStorage" EntitySet="WarehouseStorage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CangChuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RealName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="DeleteTime" Type="DateTime" Precision="0" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dept" Relationship="Self.FK_Admin_Dept" FromRole="Admin" ToRole="Dept" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Admin_Role" FromRole="Admin" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Auditing">
+          <Key>
+            <PropertyRef Name="AudiId" />
+          </Key>
+          <Property Name="AudiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AudiName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Comeback" Relationship="Self.FK_Comeback_Auditing" FromRole="Auditing" ToRole="Comeback" />
+          <NavigationProperty Name="Damage" Relationship="Self.FK_Damage_Auditing" FromRole="Auditing" ToRole="Damage" />
+          <NavigationProperty Name="Deliver" Relationship="Self.FK_Deliver_Auditing" FromRole="Auditing" ToRole="Deliver" />
+          <NavigationProperty Name="GarageShift" Relationship="Self.FK_GarageShift_Auditing" FromRole="Auditing" ToRole="GarageShift" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_Warehouse_Auditing" FromRole="Auditing" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="CombackStorage">
+          <Key>
+            <PropertyRef Name="CombStId" />
+          </Key>
+          <Property Name="CombStId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CobId" Type="Int32" Nullable="false" />
+          <Property Name="DeliId" Type="Int32" Nullable="false" />
+          <Property Name="DelSId" Type="Int32" Nullable="false" />
+          <Property Name="ComNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comeback" Relationship="Self.FK_CombackStorage_Comeback" FromRole="CombackStorage" ToRole="Comeback" />
+          <NavigationProperty Name="Deliver" Relationship="Self.FK_CombackStorage_Deliver" FromRole="CombackStorage" ToRole="Deliver" />
+          <NavigationProperty Name="DeliverStorage" Relationship="Self.FK_CombackStorage_DeliverStorage" FromRole="CombackStorage" ToRole="DeliverStorage" />
+        </EntityType>
+        <EntityType Name="Comeback">
+          <Key>
+            <PropertyRef Name="CobId" />
+          </Key>
+          <Property Name="CobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CobType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliId" Type="Int32" Nullable="false" />
+          <Property Name="CobPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AudiId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Auditing" Relationship="Self.FK_Comeback_Auditing" FromRole="Comeback" ToRole="Auditing" />
+          <NavigationProperty Name="CombackStorage" Relationship="Self.FK_CombackStorage_Comeback" FromRole="Comeback" ToRole="CombackStorage" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CusTel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="CusNum" Type="Int32" Nullable="false" />
+          <Property Name="Remanke" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerAdd" Relationship="Self.FK_CustomerAdd_Customer" FromRole="Customer" ToRole="CustomerAdd" />
+          <NavigationProperty Name="Deliver" Relationship="Self.FK_Deliver_Customer" FromRole="Customer" ToRole="Deliver" />
+        </EntityType>
+        <EntityType Name="CustomerAdd">
+          <Key>
+            <PropertyRef Name="CusadId" />
+          </Key>
+          <Property Name="CusadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusadAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CusId" Type="Int32" Nullable="false" />
+          <Property Name="CusadPerson" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CusadTel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerAdd_Customer" FromRole="CustomerAdd" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Damage">
+          <Key>
+            <PropertyRef Name="Damid" />
+          </Key>
+          <Property Name="Damid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DamType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DamOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DamPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AudiId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Auditing" Relationship="Self.FK_Damage_Auditing" FromRole="Damage" ToRole="Auditing" />
+          <NavigationProperty Name="DamageStorage" Relationship="Self.FK_DamageStorage_Damage" FromRole="Damage" ToRole="DamageStorage" />
+        </EntityType>
+        <EntityType Name="DamageStorage">
+          <Key>
+            <PropertyRef Name="DamSId" />
+          </Key>
+          <Property Name="DamSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Damid" Type="Int32" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProBaoSNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Damage" Relationship="Self.FK_DamageStorage_Damage" FromRole="DamageStorage" ToRole="Damage" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_DamageStorage_Probaict" FromRole="DamageStorage" ToRole="Probaict" />
+        </EntityType>
+        <EntityType Name="Deliver">
+          <Key>
+            <PropertyRef Name="DeliId" />
+          </Key>
+          <Property Name="DeliId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliaOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DelDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CusId" Type="Int32" Nullable="false" />
+          <Property Name="DeliPerson" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AudiId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Auditing" Relationship="Self.FK_Deliver_Auditing" FromRole="Deliver" ToRole="Auditing" />
+          <NavigationProperty Name="CombackStorage" Relationship="Self.FK_CombackStorage_Deliver" FromRole="Deliver" ToRole="CombackStorage" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Deliver_Customer" FromRole="Deliver" ToRole="Customer" />
+          <NavigationProperty Name="DeliverStorage" Relationship="Self.FK_DeliverStorage_Deliver" FromRole="Deliver" ToRole="DeliverStorage" />
+        </EntityType>
+        <EntityType Name="DeliverStorage">
+          <Key>
+            <PropertyRef Name="DelSId" />
+          </Key>
+          <Property Name="DelSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliId" Type="Int32" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProChukNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CombackStorage" Relationship="Self.FK_CombackStorage_DeliverStorage" FromRole="DeliverStorage" ToRole="CombackStorage" />
+          <NavigationProperty Name="Deliver" Relationship="Self.FK_DeliverStorage_Deliver" FromRole="DeliverStorage" ToRole="Deliver" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_DeliverStorage_Probaict" FromRole="DeliverStorage" ToRole="Probaict" />
+        </EntityType>
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_Dept" FromRole="Dept" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="GarageShift">
+          <Key>
+            <PropertyRef Name="GarSId" />
+          </Key>
+          <Property Name="GarSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GarSType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AudiId" Type="Int32" Nullable="false" />
+          <Property Name="GarSOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GarSPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Auditing" Relationship="Self.FK_GarageShift_Auditing" FromRole="GarageShift" ToRole="Auditing" />
+          <NavigationProperty Name="GarageShiftStorage" Relationship="Self.FK_GarageShiftStorage_GarageShiftStorage" FromRole="GarageShift" ToRole="GarageShiftStorage" />
+        </EntityType>
+        <EntityType Name="GarageShiftStorage">
+          <Key>
+            <PropertyRef Name="GarSStoId" />
+          </Key>
+          <Property Name="GarSStoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GarSId" Type="Int32" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Supid" Type="Int32" Nullable="false" />
+          <Property Name="StorId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GarageShift" Relationship="Self.FK_GarageShiftStorage_GarageShiftStorage" FromRole="GarageShiftStorage" ToRole="GarageShift" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_GarageShiftStorage_Probaict" FromRole="GarageShiftStorage" ToRole="Probaict" />
+        </EntityType>
+        <EntityType Name="Probaict">
+          <Key>
+            <PropertyRef Name="ProId" />
+          </Key>
+          <Property Name="ProId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PorGuiGe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProCId" Type="Int32" Nullable="false" />
+          <Property Name="UnId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProNumber" Type="Int32" Nullable="false" />
+          <Property Name="ProJinhuo" Type="Int32" Nullable="false" />
+          <Property Name="ProChuhuo" Type="Int32" Nullable="false" />
+          <Property Name="ProBaosun" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DamageStorage" Relationship="Self.FK_DamageStorage_Probaict" FromRole="Probaict" ToRole="DamageStorage" />
+          <NavigationProperty Name="DeliverStorage" Relationship="Self.FK_DeliverStorage_Probaict" FromRole="Probaict" ToRole="DeliverStorage" />
+          <NavigationProperty Name="GarageShiftStorage" Relationship="Self.FK_GarageShiftStorage_Probaict" FromRole="Probaict" ToRole="GarageShiftStorage" />
+          <NavigationProperty Name="ProbaictCatagory" Relationship="Self.FK_Probaict_ProbaictCatagory1" FromRole="Probaict" ToRole="ProbaictCatagory" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_Probaict_Unit" FromRole="Probaict" ToRole="Unit" />
+          <NavigationProperty Name="ProbaictStorage" Relationship="Self.FK_ProbaictStorage_Probaict" FromRole="Probaict" ToRole="ProbaictStorage" />
+          <NavigationProperty Name="WarehouseStorage" Relationship="Self.FK_WarehouseStorage_Probaict" FromRole="Probaict" ToRole="WarehouseStorage" />
+        </EntityType>
+        <EntityType Name="ProbaictCatagory">
+          <Key>
+            <PropertyRef Name="ProCId" />
+          </Key>
+          <Property Name="ProCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProCName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProCCreteName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_Probaict_ProbaictCatagory1" FromRole="ProbaictCatagory" ToRole="Probaict" />
+        </EntityType>
+        <EntityType Name="ProbaictStorage">
+          <Key>
+            <PropertyRef Name="ProSId" />
+          </Key>
+          <Property Name="ProSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Supid" Type="Int32" Nullable="false" />
+          <Property Name="StorId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_ProbaictStorage_Probaict" FromRole="ProbaictStorage" ToRole="Probaict" />
+          <NavigationProperty Name="Storehouse" Relationship="Self.FK_ProbaictStorage_Storehouse" FromRole="ProbaictStorage" ToRole="Storehouse" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_ProbaictStorage_Supplier" FromRole="ProbaictStorage" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_Role" FromRole="Role" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Storehouse">
+          <Key>
+            <PropertyRef Name="StorId" />
+          </Key>
+          <Property Name="StorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StoreName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Supid" Type="Int32" Nullable="false" />
+          <Property Name="StId" Type="Int32" Nullable="false" />
+          <Property Name="IsMoren" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProbaictStorage" Relationship="Self.FK_ProbaictStorage_Storehouse" FromRole="Storehouse" ToRole="ProbaictStorage" />
+          <NavigationProperty Name="Storehousetype" Relationship="Self.FK_Storehouse_Storehousetype" FromRole="Storehouse" ToRole="Storehousetype" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Storehouse_Supplier" FromRole="Storehouse" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Storehousetype">
+          <Key>
+            <PropertyRef Name="StId" />
+          </Key>
+          <Property Name="StId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsJin" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Storehouse" Relationship="Self.FK_Storehouse_Storehousetype" FromRole="Storehousetype" ToRole="Storehouse" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupId" />
+          </Key>
+          <Property Name="SupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SupName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProbaictStorage" Relationship="Self.FK_ProbaictStorage_Supplier" FromRole="Supplier" ToRole="ProbaictStorage" />
+          <NavigationProperty Name="Storehouse" Relationship="Self.FK_Storehouse_Supplier" FromRole="Supplier" ToRole="Storehouse" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnId" />
+          </Key>
+          <Property Name="UnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_Probaict_Unit" FromRole="Unit" ToRole="Probaict" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VenId" />
+          </Key>
+          <Property Name="VenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VenName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VenTel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VenEmain" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VenPerson" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VenAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_Warehouse_Vendor" FromRole="Vendor" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="WarId" />
+          </Key>
+          <Property Name="WarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WarType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WarOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WarPerson" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VenId" Type="Int32" Nullable="false" />
+          <Property Name="AudiId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Auditing" Relationship="Self.FK_Warehouse_Auditing" FromRole="Warehouse" ToRole="Auditing" />
+          <NavigationProperty Name="Vendor" Relationship="Self.FK_Warehouse_Vendor" FromRole="Warehouse" ToRole="Vendor" />
+          <NavigationProperty Name="WarehouseStorage" Relationship="Self.FK_WarehouseStorage_Warehouse" FromRole="Warehouse" ToRole="WarehouseStorage" />
+        </EntityType>
+        <EntityType Name="WarehouseStorage">
+          <Key>
+            <PropertyRef Name="WarSId" />
+          </Key>
+          <Property Name="WarSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WarId" Type="Int32" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WarRukuNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Probaict" Relationship="Self.FK_WarehouseStorage_Probaict" FromRole="WarehouseStorage" ToRole="Probaict" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_WarehouseStorage_Warehouse" FromRole="WarehouseStorage" ToRole="Warehouse" />
+        </EntityType>
+        <Association Name="FK_Admin_Dept">
+          <End Role="Dept" Type="Self.Dept" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dept">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comeback_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Comeback" Type="Self.Comeback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Comeback">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Damage_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Damage" Type="Self.Damage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Damage">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deliver_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageShift_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="GarageShift" Type="Self.GarageShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="GarageShift">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Auditing">
+          <End Role="Auditing" Type="Self.Auditing" Multiplicity="1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditing">
+              <PropertyRef Name="AudiId" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="AudiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CombackStorage_Comeback">
+          <End Role="Comeback" Type="Self.Comeback" Multiplicity="1" />
+          <End Role="CombackStorage" Type="Self.CombackStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comeback">
+              <PropertyRef Name="CobId" />
+            </Principal>
+            <Dependent Role="CombackStorage">
+              <PropertyRef Name="CobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CombackStorage_Deliver">
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="1" />
+          <End Role="CombackStorage" Type="Self.CombackStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliver">
+              <PropertyRef Name="DeliId" />
+            </Principal>
+            <Dependent Role="CombackStorage">
+              <PropertyRef Name="DeliId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CombackStorage_DeliverStorage">
+          <End Role="DeliverStorage" Type="Self.DeliverStorage" Multiplicity="1" />
+          <End Role="CombackStorage" Type="Self.CombackStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliverStorage">
+              <PropertyRef Name="DelSId" />
+            </Principal>
+            <Dependent Role="CombackStorage">
+              <PropertyRef Name="DelSId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerAdd_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerAdd" Type="Self.CustomerAdd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="CustomerAdd">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deliver_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageStorage_Damage">
+          <End Role="Damage" Type="Self.Damage" Multiplicity="1" />
+          <End Role="DamageStorage" Type="Self.DamageStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Damage">
+              <PropertyRef Name="Damid" />
+            </Principal>
+            <Dependent Role="DamageStorage">
+              <PropertyRef Name="Damid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DamageStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="DamageStorage" Type="Self.DamageStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="DamageStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliverStorage_Deliver">
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="1" />
+          <End Role="DeliverStorage" Type="Self.DeliverStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliver">
+              <PropertyRef Name="DeliId" />
+            </Principal>
+            <Dependent Role="DeliverStorage">
+              <PropertyRef Name="DeliId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliverStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="DeliverStorage" Type="Self.DeliverStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="DeliverStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageShiftStorage_GarageShiftStorage">
+          <End Role="GarageShift" Type="Self.GarageShift" Multiplicity="1" />
+          <End Role="GarageShiftStorage" Type="Self.GarageShiftStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GarageShift">
+              <PropertyRef Name="GarSId" />
+            </Principal>
+            <Dependent Role="GarageShiftStorage">
+              <PropertyRef Name="GarSId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageShiftStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="GarageShiftStorage" Type="Self.GarageShiftStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="GarageShiftStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Probaict_ProbaictCatagory1">
+          <End Role="ProbaictCatagory" Type="Self.ProbaictCatagory" Multiplicity="1" />
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProbaictCatagory">
+              <PropertyRef Name="ProCId" />
+            </Principal>
+            <Dependent Role="Probaict">
+              <PropertyRef Name="ProCId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Probaict_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnId" />
+            </Principal>
+            <Dependent Role="Probaict">
+              <PropertyRef Name="UnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProbaictStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="ProbaictStorage" Type="Self.ProbaictStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="ProbaictStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WarehouseStorage_Probaict">
+          <End Role="Probaict" Type="Self.Probaict" Multiplicity="1" />
+          <End Role="WarehouseStorage" Type="Self.WarehouseStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Probaict">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="WarehouseStorage">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProbaictStorage_Storehouse">
+          <End Role="Storehouse" Type="Self.Storehouse" Multiplicity="1" />
+          <End Role="ProbaictStorage" Type="Self.ProbaictStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storehouse">
+              <PropertyRef Name="StorId" />
+            </Principal>
+            <Dependent Role="ProbaictStorage">
+              <PropertyRef Name="StorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProbaictStorage_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="ProbaictStorage" Type="Self.ProbaictStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupId" />
+            </Principal>
+            <Dependent Role="ProbaictStorage">
+              <PropertyRef Name="Supid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storehouse_Storehousetype">
+          <End Role="Storehousetype" Type="Self.Storehousetype" Multiplicity="1" />
+          <End Role="Storehouse" Type="Self.Storehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storehousetype">
+              <PropertyRef Name="StId" />
+            </Principal>
+            <Dependent Role="Storehouse">
+              <PropertyRef Name="StId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storehouse_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Storehouse" Type="Self.Storehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupId" />
+            </Principal>
+            <Dependent Role="Storehouse">
+              <PropertyRef Name="Supid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VenId" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="VenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WarehouseStorage_Warehouse">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+          <End Role="WarehouseStorage" Type="Self.WarehouseStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WarId" />
+            </Principal>
+            <Dependent Role="WarehouseStorage">
+              <PropertyRef Name="WarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CangChuEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Auditing" EntityType="Self.Auditing" />
+          <EntitySet Name="CombackStorage" EntityType="Self.CombackStorage" />
+          <EntitySet Name="Comeback" EntityType="Self.Comeback" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerAdd" EntityType="Self.CustomerAdd" />
+          <EntitySet Name="Damage" EntityType="Self.Damage" />
+          <EntitySet Name="DamageStorage" EntityType="Self.DamageStorage" />
+          <EntitySet Name="Deliver" EntityType="Self.Deliver" />
+          <EntitySet Name="DeliverStorage" EntityType="Self.DeliverStorage" />
+          <EntitySet Name="Dept" EntityType="Self.Dept" />
+          <EntitySet Name="GarageShift" EntityType="Self.GarageShift" />
+          <EntitySet Name="GarageShiftStorage" EntityType="Self.GarageShiftStorage" />
+          <EntitySet Name="Probaict" EntityType="Self.Probaict" />
+          <EntitySet Name="ProbaictCatagory" EntityType="Self.ProbaictCatagory" />
+          <EntitySet Name="ProbaictStorage" EntityType="Self.ProbaictStorage" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Storehouse" EntityType="Self.Storehouse" />
+          <EntitySet Name="Storehousetype" EntityType="Self.Storehousetype" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+          <EntitySet Name="WarehouseStorage" EntityType="Self.WarehouseStorage" />
+          <AssociationSet Name="FK_Admin_Dept" Association="Self.FK_Admin_Dept">
+            <End Role="Dept" EntitySet="Dept" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_Role" Association="Self.FK_Admin_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comeback_Auditing" Association="Self.FK_Comeback_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Comeback" EntitySet="Comeback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Damage_Auditing" Association="Self.FK_Damage_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Damage" EntitySet="Damage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deliver_Auditing" Association="Self.FK_Deliver_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Deliver" EntitySet="Deliver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageShift_Auditing" Association="Self.FK_GarageShift_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="GarageShift" EntitySet="GarageShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Auditing" Association="Self.FK_Warehouse_Auditing">
+            <End Role="Auditing" EntitySet="Auditing" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CombackStorage_Comeback" Association="Self.FK_CombackStorage_Comeback">
+            <End Role="Comeback" EntitySet="Comeback" />
+            <End Role="CombackStorage" EntitySet="CombackStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CombackStorage_Deliver" Association="Self.FK_CombackStorage_Deliver">
+            <End Role="Deliver" EntitySet="Deliver" />
+            <End Role="CombackStorage" EntitySet="CombackStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CombackStorage_DeliverStorage" Association="Self.FK_CombackStorage_DeliverStorage">
+            <End Role="DeliverStorage" EntitySet="DeliverStorage" />
+            <End Role="CombackStorage" EntitySet="CombackStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerAdd_Customer" Association="Self.FK_CustomerAdd_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerAdd" EntitySet="CustomerAdd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deliver_Customer" Association="Self.FK_Deliver_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Deliver" EntitySet="Deliver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageStorage_Damage" Association="Self.FK_DamageStorage_Damage">
+            <End Role="Damage" EntitySet="Damage" />
+            <End Role="DamageStorage" EntitySet="DamageStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DamageStorage_Probaict" Association="Self.FK_DamageStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="DamageStorage" EntitySet="DamageStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliverStorage_Deliver" Association="Self.FK_DeliverStorage_Deliver">
+            <End Role="Deliver" EntitySet="Deliver" />
+            <End Role="DeliverStorage" EntitySet="DeliverStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliverStorage_Probaict" Association="Self.FK_DeliverStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="DeliverStorage" EntitySet="DeliverStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageShiftStorage_GarageShiftStorage" Association="Self.FK_GarageShiftStorage_GarageShiftStorage">
+            <End Role="GarageShift" EntitySet="GarageShift" />
+            <End Role="GarageShiftStorage" EntitySet="GarageShiftStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageShiftStorage_Probaict" Association="Self.FK_GarageShiftStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="GarageShiftStorage" EntitySet="GarageShiftStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Probaict_ProbaictCatagory1" Association="Self.FK_Probaict_ProbaictCatagory1">
+            <End Role="ProbaictCatagory" EntitySet="ProbaictCatagory" />
+            <End Role="Probaict" EntitySet="Probaict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Probaict_Unit" Association="Self.FK_Probaict_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Probaict" EntitySet="Probaict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProbaictStorage_Probaict" Association="Self.FK_ProbaictStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="ProbaictStorage" EntitySet="ProbaictStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WarehouseStorage_Probaict" Association="Self.FK_WarehouseStorage_Probaict">
+            <End Role="Probaict" EntitySet="Probaict" />
+            <End Role="WarehouseStorage" EntitySet="WarehouseStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProbaictStorage_Storehouse" Association="Self.FK_ProbaictStorage_Storehouse">
+            <End Role="Storehouse" EntitySet="Storehouse" />
+            <End Role="ProbaictStorage" EntitySet="ProbaictStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProbaictStorage_Supplier" Association="Self.FK_ProbaictStorage_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="ProbaictStorage" EntitySet="ProbaictStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storehouse_Storehousetype" Association="Self.FK_Storehouse_Storehousetype">
+            <End Role="Storehousetype" EntitySet="Storehousetype" />
+            <End Role="Storehouse" EntitySet="Storehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storehouse_Supplier" Association="Self.FK_Storehouse_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Storehouse" EntitySet="Storehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Vendor" Association="Self.FK_Warehouse_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WarehouseStorage_Warehouse" Association="Self.FK_WarehouseStorage_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WarehouseStorage" EntitySet="WarehouseStorage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CangChuModelStoreContainer" CdmEntityContainer="CangChuEntities1">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="CangChuModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteTime" ColumnName="DeleteTime" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auditing">
+            <EntityTypeMapping TypeName="CangChuModel.Auditing">
+              <MappingFragment StoreEntitySet="Auditing">
+                <ScalarProperty Name="AudiId" ColumnName="AudiId" />
+                <ScalarProperty Name="AudiName" ColumnName="AudiName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CombackStorage">
+            <EntityTypeMapping TypeName="CangChuModel.CombackStorage">
+              <MappingFragment StoreEntitySet="CombackStorage">
+                <ScalarProperty Name="CombStId" ColumnName="CombStId" />
+                <ScalarProperty Name="CobId" ColumnName="CobId" />
+                <ScalarProperty Name="DeliId" ColumnName="DeliId" />
+                <ScalarProperty Name="DelSId" ColumnName="DelSId" />
+                <ScalarProperty Name="ComNum" ColumnName="ComNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comeback">
+            <EntityTypeMapping TypeName="CangChuModel.Comeback">
+              <MappingFragment StoreEntitySet="Comeback">
+                <ScalarProperty Name="CobId" ColumnName="CobId" />
+                <ScalarProperty Name="CobType" ColumnName="CobType" />
+                <ScalarProperty Name="DeliId" ColumnName="DeliId" />
+                <ScalarProperty Name="CobPerson" ColumnName="CobPerson" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+                <ScalarProperty Name="AudiId" ColumnName="AudiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="CangChuModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="CusName" ColumnName="CusName" />
+                <ScalarProperty Name="CusTel" ColumnName="CusTel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CusNum" ColumnName="CusNum" />
+                <ScalarProperty Name="Remanke" ColumnName="Remanke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerAdd">
+            <EntityTypeMapping TypeName="CangChuModel.CustomerAdd">
+              <MappingFragment StoreEntitySet="CustomerAdd">
+                <ScalarProperty Name="CusadId" ColumnName="CusadId" />
+                <ScalarProperty Name="CusadAddress" ColumnName="CusadAddress" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="CusadPerson" ColumnName="CusadPerson" />
+                <ScalarProperty Name="CusadTel" ColumnName="CusadTel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Damage">
+            <EntityTypeMapping TypeName="CangChuModel.Damage">
+              <MappingFragment StoreEntitySet="Damage">
+                <ScalarProperty Name="Damid" ColumnName="Damid" />
+                <ScalarProperty Name="DamType" ColumnName="DamType" />
+                <ScalarProperty Name="DamOrder" ColumnName="DamOrder" />
+                <ScalarProperty Name="DamPerson" ColumnName="DamPerson" />
+                <ScalarProperty Name="AudiId" ColumnName="AudiId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamageStorage">
+            <EntityTypeMapping TypeName="CangChuModel.DamageStorage">
+              <MappingFragment StoreEntitySet="DamageStorage">
+                <ScalarProperty Name="DamSId" ColumnName="DamSId" />
+                <ScalarProperty Name="Damid" ColumnName="Damid" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="ProBaoSNum" ColumnName="ProBaoSNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliver">
+            <EntityTypeMapping TypeName="CangChuModel.Deliver">
+              <MappingFragment StoreEntitySet="Deliver">
+                <ScalarProperty Name="DeliId" ColumnName="DeliId" />
+                <ScalarProperty Name="DeliType" ColumnName="DeliType" />
+                <ScalarProperty Name="DeliaOrder" ColumnName="DeliaOrder" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="DeliPerson" ColumnName="DeliPerson" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+                <ScalarProperty Name="AudiId" ColumnName="AudiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliverStorage">
+            <EntityTypeMapping TypeName="CangChuModel.DeliverStorage">
+              <MappingFragment StoreEntitySet="DeliverStorage">
+                <ScalarProperty Name="DelSId" ColumnName="DelSId" />
+                <ScalarProperty Name="DeliId" ColumnName="DeliId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="ProChukNum" ColumnName="ProChukNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dept">
+            <EntityTypeMapping TypeName="CangChuModel.Dept">
+              <MappingFragment StoreEntitySet="Dept">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GarageShift">
+            <EntityTypeMapping TypeName="CangChuModel.GarageShift">
+              <MappingFragment StoreEntitySet="GarageShift">
+                <ScalarProperty Name="GarSId" ColumnName="GarSId" />
+                <ScalarProperty Name="GarSType" ColumnName="GarSType" />
+                <ScalarProperty Name="AudiId" ColumnName="AudiId" />
+                <ScalarProperty Name="GarSOrder" ColumnName="GarSOrder" />
+                <ScalarProperty Name="GarSPerson" ColumnName="GarSPerson" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GarageShiftStorage">
+            <EntityTypeMapping TypeName="CangChuModel.GarageShiftStorage">
+              <MappingFragment StoreEntitySet="GarageShiftStorage">
+                <ScalarProperty Name="GarSStoId" ColumnName="GarSStoId" />
+                <ScalarProperty Name="GarSId" ColumnName="GarSId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="Supid" ColumnName="Supid" />
+                <ScalarProperty Name="StorId" ColumnName="StorId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Probaict">
+            <EntityTypeMapping TypeName="CangChuModel.Probaict">
+              <MappingFragment StoreEntitySet="Probaict">
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="ProName" ColumnName="ProName" />
+                <ScalarProperty Name="ProPrice" ColumnName="ProPrice" />
+                <ScalarProperty Name="PorGuiGe" ColumnName="PorGuiGe" />
+                <ScalarProperty Name="ProCId" ColumnName="ProCId" />
+                <ScalarProperty Name="UnId" ColumnName="UnId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ProNumber" ColumnName="ProNumber" />
+                <ScalarProperty Name="ProJinhuo" ColumnName="ProJinhuo" />
+                <ScalarProperty Name="ProChuhuo" ColumnName="ProChuhuo" />
+                <ScalarProperty Name="ProBaosun" ColumnName="ProBaosun" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProbaictCatagory">
+            <EntityTypeMapping TypeName="CangChuModel.ProbaictCatagory">
+              <MappingFragment StoreEntitySet="ProbaictCatagory">
+                <ScalarProperty Name="ProCId" ColumnName="ProCId" />
+                <ScalarProperty Name="ProCName" ColumnName="ProCName" />
+                <ScalarProperty Name="ProCCreteName" ColumnName="ProCCreteName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProbaictStorage">
+            <EntityTypeMapping TypeName="CangChuModel.ProbaictStorage">
+              <MappingFragment StoreEntitySet="ProbaictStorage">
+                <ScalarProperty Name="ProSId" ColumnName="ProSId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="Supid" ColumnName="Supid" />
+                <ScalarProperty Name="StorId" ColumnName="StorId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="CangChuModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storehouse">
+            <EntityTypeMapping TypeName="CangChuModel.Storehouse">
+              <MappingFragment StoreEntitySet="Storehouse">
+                <ScalarProperty Name="StorId" ColumnName="StorId" />
+                <ScalarProperty Name="StoreNum" ColumnName="StoreNum" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="Supid" ColumnName="Supid" />
+                <ScalarProperty Name="StId" ColumnName="StId" />
+                <ScalarProperty Name="IsMoren" ColumnName="IsMoren" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storehousetype">
+            <EntityTypeMapping TypeName="CangChuModel.Storehousetype">
+              <MappingFragment StoreEntitySet="Storehousetype">
+                <ScalarProperty Name="StId" ColumnName="StId" />
+                <ScalarProperty Name="StName" ColumnName="StName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsJin" ColumnName="IsJin" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="CangChuModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupId" ColumnName="SupId" />
+                <ScalarProperty Name="SupNum" ColumnName="SupNum" />
+                <ScalarProperty Name="SupName" ColumnName="SupName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CangChuModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unit">
+            <EntityTypeMapping TypeName="CangChuModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="UnId" ColumnName="UnId" />
+                <ScalarProperty Name="UnName" ColumnName="UnName" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendor">
+            <EntityTypeMapping TypeName="CangChuModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="VenId" ColumnName="VenId" />
+                <ScalarProperty Name="VenType" ColumnName="VenType" />
+                <ScalarProperty Name="VenName" ColumnName="VenName" />
+                <ScalarProperty Name="VenTel" ColumnName="VenTel" />
+                <ScalarProperty Name="VenEmain" ColumnName="VenEmain" />
+                <ScalarProperty Name="VenPerson" ColumnName="VenPerson" />
+                <ScalarProperty Name="VenAddress" ColumnName="VenAddress" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="CangChuModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="WarId" ColumnName="WarId" />
+                <ScalarProperty Name="WarType" ColumnName="WarType" />
+                <ScalarProperty Name="WarOrder" ColumnName="WarOrder" />
+                <ScalarProperty Name="WarPerson" ColumnName="WarPerson" />
+                <ScalarProperty Name="VenId" ColumnName="VenId" />
+                <ScalarProperty Name="AudiId" ColumnName="AudiId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remake" ColumnName="Remake" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarehouseStorage">
+            <EntityTypeMapping TypeName="CangChuModel.WarehouseStorage">
+              <MappingFragment StoreEntitySet="WarehouseStorage">
+                <ScalarProperty Name="WarSId" ColumnName="WarSId" />
+                <ScalarProperty Name="WarId" ColumnName="WarId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="WarRukuNum" ColumnName="WarRukuNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

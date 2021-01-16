@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4339d2283fc84734aa4c0aa304efb637" Name="Diagram1">
+        <EntityTypeShape EntityType="CangChuModel.Admin" Width="1.5" PointX="13" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Auditing" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.CombackStorage" Width="1.5" PointX="10.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Comeback" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Customer" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.CustomerAdd" Width="1.5" PointX="3" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Damage" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.DamageStorage" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Deliver" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.DeliverStorage" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Dept" Width="1.5" PointX="10.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.GarageShift" Width="1.5" PointX="6" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.GarageShiftStorage" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Probaict" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.ProbaictCatagory" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.ProbaictStorage" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Role" Width="1.5" PointX="10.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Storehouse" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Storehousetype" Width="1.5" PointX="0.75" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Supplier" Width="1.5" PointX="0.75" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Unit" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Vendor" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.Warehouse" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CangChuModel.WarehouseStorage" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="CangChuModel.FK_Admin_Dept" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Admin_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Comeback_Auditing" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Damage_Auditing" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Deliver_Auditing" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_GarageShift_Auditing" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Warehouse_Auditing" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_CombackStorage_Comeback" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_CombackStorage_Deliver" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_CombackStorage_DeliverStorage" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_CustomerAdd_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Deliver_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_DamageStorage_Damage" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_DamageStorage_Probaict" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_DeliverStorage_Deliver" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_DeliverStorage_Probaict" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_GarageShiftStorage_GarageShiftStorage" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_GarageShiftStorage_Probaict" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Probaict_ProbaictCatagory1" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Probaict_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_ProbaictStorage_Probaict" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_WarehouseStorage_Probaict" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_ProbaictStorage_Storehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_ProbaictStorage_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Storehouse_Storehousetype" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Storehouse_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_Warehouse_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="CangChuModel.FK_WarehouseStorage_Warehouse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

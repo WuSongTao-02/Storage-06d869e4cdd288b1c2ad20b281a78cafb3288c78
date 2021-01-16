@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link rel="stylesheet" href="~/X-admin/css/font.css">
+    <link rel="stylesheet" href="~/X-admin/css/xadmin.css">
+    <script type="text/javascript" src="~/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/X-admin/js/xadmin.js"></script>
+
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label for="L_username" class="layui-form-label">
+                        <span class="x-red">*</span>部门名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="name" name="name" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label"></label>
+                    <button class="layui-btn" lay-filter="add" lay-submit="" onclick="add()">增加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+<script>
+        
+
+    var time = Date.now.toString();
+    var IsDelete = 0;
+    function add() {
+        $.ajax({
+            type: "POST",
+            url: "/Huang/Add",
+            data: "{d:{DeptName:'" + $("#name").val() + "',CreateTime:'" + time + "',IsDelete:'" + IsDelete + "'}}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                if (result > 0) {
+                    alert("1"+time);
+                   // alert("新增成功");
+                   // location.href = '/Huang/Department';
+                } else {
+                    alert("新增失败");
+                }
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+    }
+
+    layui.use(['form', 'layer', 'jquery'],
+        function () {
+            $ = layui.jquery;
+            var form = layui.form,
+                layer = layui.layer;
+            //自定义验证规则
+            form.verify({
+                nikename: function (value) {
+                    if (value.length < 3) {
+                        return '昵称至少得3个字符啊';
+                    }
+                },
+            });
+            //监听提交
+            form.on('submit(add)',
+                function (data) {
+                    console.log(data);
+                    layer.alert("增加成功", {
+                        //发异步，把数据提交给php
+                        icon: 1
+                    },
+                        function () {
+                            //关闭当前frame
+                            xadmin.close();
+                            // 可以对父窗口进行刷新
+                            xadmin.father_reload();
+                        });
+                    return false;
+                });
+
+        });
+</script>

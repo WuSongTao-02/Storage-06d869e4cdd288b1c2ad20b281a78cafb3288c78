@@ -1,0 +1,153 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChanPingYeMianAdd</title>
+    <link href="~/X-admin/css/font.css" rel="stylesheet" />
+    <link href="~/X-admin/css/xadmin.css" rel="stylesheet" />
+    <script src="~/X-admin/lib/layui/layui.js"></script>
+    <script src="~/X-admin/js/xadmin.js"></script>
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>产品编号
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="ProId" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>产品名称
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="ProName" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="phone" class="layui-form-label">
+                        <span class="x-red">*</span>产品价格
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="ProPrice" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="phone" class="layui-form-label">
+                        <span class="x-red">*</span>产品规格
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="PorGuiGe" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>产品类别
+                    </label>
+                    <div class="layui-input-inline">
+                        <select id="ProCId">
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>产品单位
+                    </label>
+                    <div class="layui-input-inline">
+                        <select id="UnId">
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="phone" class="layui-form-label">
+                        <span class="x-red">*</span>创建时间
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="date" id="CreateTime" class="layui-input">
+                    </div>
+                </div>
+        </div>
+        <div class="layui-form-item">
+            <input type="button" id="ZengJia" value="增加" class="layui-btn" />
+            <a href="/LiuJie/ChanPingYeMian" class="layui-btn">取消</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/X-admin/lib/layui/layui.js"></script>
+<script>
+    $(function () {
+        ProbaictCatagory();
+        Unit();
+    });
+
+    //绑定产品类别
+    function ProbaictCatagory() {
+        $.ajax({
+            type: "POST",
+            url: "/LiuJie/GetProbaictCatagory",
+            data: "{}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                $.each(result, function (index, data) {
+                    $("#ProCId").append("<option value='" + data.ProCId + "'>" + data.ProCName + "</option>");
+                });
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+    }
+
+    //绑定产品单位
+    function Unit() {
+        $.ajax({
+            type: "POST",
+            url: "/LiuJie/GetUnit",
+            data: "{}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                $.each(result, function (index, data) {
+                    $("#UnId").append("<option value='" + data.UnId + "'>" + data.UnName + "</option>");
+                });
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+    }
+
+    $("#ZengJia").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/LiuJie/GetAddProbaict",
+            data: "{pr:{ProId:'" + $("#ProId").val() + "',ProName:'" + $("#ProName").val() + "',ProPrice:'" + $("#ProPrice").val() + "',PorGuiGe:'" + $("#PorGuiGe").val() + "',ProCId:'" + $("#ProCId").val() + "',UnId:'" + $("#UnId").val() + "',CreateTime:'" + $("#CreateTime").val() + "',IsDelete:'" + 0 + "',ProNumber:'" + 0 + "',ProJinhuo:'" + 0 + "',ProChuhuo:'" + 0 + "',ProBaosun:'" + 0 + "'}}",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                if (result > 0) {
+                    alert("增加成功");
+                    location.href = '/LiuJie/ChanPingYeMian';
+                }
+                else {
+                    alert("增加失败");
+                }
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+    })
+</script>
